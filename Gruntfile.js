@@ -10,14 +10,14 @@ module.exports = function (grunt) {
 
     'meta': {
       'jsFilesForTesting': [
-        'public/lib/jquery/jquery.js',
-        'public/lib/angular/angular.js',
-        'public/lib/angular-route/angular-route.js',
-        'public/lib/angular-sanitize/angular-sanitize.js',
-        'public/lib/angular-mocks/angular-mocks.js',
-        'public/lib/restangular/dist/restangular.js',
-        'public/lib/underscore/underscore.js',
-        'public/lib/underscore/underscore.js',
+        'bower_components/jquery/jquery.js',
+        'bower_components/angular/angular.js',
+        'bower_components/angular-route/angular-route.js',
+        'bower_components/angular-sanitize/angular-sanitize.js',
+        'bower_components/angular-mocks/angular-mocks.js',
+        'bower_components/restangular/dist/restangular.js',
+        'bower_components/underscore/underscore.js',
+        'bower_components/underscore/underscore.js',
         'test/**/*Spec.js'
       ]
     },
