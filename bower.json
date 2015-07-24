@@ -1,6 +1,8 @@
 {
     "name": "reefolic",
     "version": "1.0.0",
+    "directory": "public/lib/",
+    "componentsDirectory": "public/lib/",
     "dependencies": {
         "angular":          "1.2.16",
         "angular-route":    "1.2.16",
