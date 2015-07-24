@@ -1,3 +1,4 @@
 #Reef'O'Lic
 
-[![Build Status](https://travis-ci.org/cedricbou/FiddleWith.png?branch=master)](https://travis-ci.org/cedricbou/FiddleWith)
+[![Build Status](https://travis-ci.org/cedricbou/reefolic-front.svg)](https://travis-ci.org/cedricbou/reefolic-front)
+
