@@ -5,6 +5,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-sftp-deploy');
 
   grunt.initConfig({
 
@@ -81,6 +82,20 @@ module.exports = function (grunt) {
       'options': {
         'destination': 'doc'
       }
+    },
+
+    'sftp-deploy': {
+       build: {
+       auth: {
+         host: 'fiddlewith.it',
+         port: 9922,
+         authKey: 'prodA'
+       },
+       src: 'dist',
+       serverSep: '/',
+       concurrency: 1,
+       progress: true
+      }
     }
 
   });
@@ -94,7 +109,8 @@ module.exports = function (grunt) {
       'karma:dist',
       'uglify',
       'karma:minified',
-      'jsdoc'
+      'jsdoc',
+      'sftp-deploy'
     ]);
 
 };
