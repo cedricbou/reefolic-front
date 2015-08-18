@@ -5,7 +5,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-jsdoc');
-  grunt.loadNpmTasks('grunt-sftp-deploy');
+  grunt.loadNpmTasks('grunt-ssh');
 
   grunt.initConfig({
 
@@ -84,22 +84,39 @@ module.exports = function (grunt) {
       }
     },
 
-    'sftp-deploy': {
-       build: {
-       auth: {
-         host: 'fiddlewith.it',
-         port: 9922,
-         authKey: 'prodA'
+    'sftp': {
+       'prodA': {
+          files: {
+	     './': 'dist/**'
+	  },
+          options: {
+             path: '/public/',
+             srcBasePath: 'dist/',
+             host: 'fiddlewith.it',
+             port: 9922,
+             privateKey: grunt.file.read(process.env['HOME'] + "/.ssh/id_prodA"),
+             username: 'deploy_prodA',
+             showProgress: true
+          }
        },
-       src: 'dist',
-       serverSep: '/',
-       concurrency: 1,
-       progress: true
-      }
+       'prodB': {
+          files: {
+	     './': 'dist/**'
+	  },
+          options: {
+             path: '/public/',
+             srcBasePath: 'dist/',
+             host: 'fiddlewith.it',
+             port: 9922,
+             privateKey: grunt.file.read(process.env['HOME'] + "/.ssh/id_prodB"),
+             username: 'deploy_prodB',
+             showProgress: true
+         }
+       }
     }
-
   });
 
+  grunt.registerTask('deployProdA', ['sftp:prodA']);
   grunt.registerTask('test', ['karma:development']);
   grunt.registerTask('build',
     [
@@ -110,7 +127,7 @@ module.exports = function (grunt) {
       'uglify',
       'karma:minified',
       'jsdoc',
-      'sftp-deploy'
+      'sftp:prodA'
     ]);
 
 };
