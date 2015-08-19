@@ -94,7 +94,7 @@ module.exports = function (grunt) {
              srcBasePath: 'dist/',
              host: 'fiddlewith.it',
              port: 9922,
-             privateKey: grunt.file.read("~/.ssh/id_prodA"),
+             privateKey: grunt.file.read(process.env['HOME'] + "/.ssh/id_prodA"),
              username: 'deploy_prodA',
              showProgress: true
           }
