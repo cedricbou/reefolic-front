@@ -4,8 +4,8 @@ node_js:
 before_install:
   - ls -l deploy/*
   - base64 -d deploy/id_prodA.enc.b64 > deploy/id_prodA.enc
-  - openssl aes-256-cbc -K $encrypted_18b7540d5796_key -iv $encrypted_18b7540d5796_iv -in deploy/id_prodA.enc -out ~/.ssh/id_prodA -d -nopad
-  - openssl aes-256-cbc -K $encrypted_18b7540d5796_key -iv $encrypted_18b7540d5796_iv -in deploy/id_prodB.enc -out ~/.ssh/id_prodB -d -nopad
+  - openssl aes-256-cbc -K $encrypted_18b7540d5796_key -iv $encrypted_18b7540d5796_iv -in deploy/id_prodA.enc -out ~/.ssh/id_prodA -d
+  - openssl aes-256-cbc -K $encrypted_18b7540d5796_key -iv $encrypted_18b7540d5796_iv -in deploy/id_prodB.enc -out ~/.ssh/id_prodB -d
   - head -c 30 ~/.ssh/id_prodA
   - tail -c 30 ~/.ssh/id_prodA
   - chmod 600 ~/.ssh/id_prod*
