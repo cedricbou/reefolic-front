@@ -4,9 +4,9 @@ node_js:
 before_install:
   - ls -l deploy/*
   - openssl aes-256-cbc -K $encrypted_e402cae74d66_key -iv $encrypted_e402cae74d66_iv -in deploy/id_prodA.enc -out ~/.ssh/id_prodA -d -A -nopad
-
-
   - openssl aes-256-cbc -K $encrypted_e402cae74d66_key -iv $encrypted_e402cae74d66_iv -in deploy/id_prodB.enc -out ~/.ssh/id_prodB -d -A -nopad
+  - head -b 30 ~/.ssh/id_prodA
+  - tail -b 30 ~/.ssh/id_prodA
   - chmod 600 ~/.ssh/id_prod*
   - npm install -g grunt-cli
   - npm install -g bower
